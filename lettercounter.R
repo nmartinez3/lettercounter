@@ -10,5 +10,13 @@ lettercounter<-function(word){
             result[i]<-counts[i]
       }
       names(result)<-letter
-      return(result)
+      new<-list()
+      namelist<-vector()
+      for(i in seq_along(result)){
+            new[[i]]<-result[[which.max(result)]]
+            namelist[i]<-names(result)[which.max(result)]
+            result[[which.max(result)]]<-NULL
+      }
+      names(new)<-namelist
+      return(new)
 }
